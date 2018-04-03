@@ -10,7 +10,7 @@ const loginInstance = (
             <div className="loginContainer">
                 <div className="loginCard">
                 <img className="logo" src={logo} alt=""/>
-                <h1>Create Avatar</h1>
+                <h3>Create Avatar</h3>
                     <div className="loginInput">
                         <Input fluid icon="user" iconPosition="left" placeholder="Username"/>
                         <Input fluid icon="lock" iconPosition="right" placeholder="Password" type="password"/>
