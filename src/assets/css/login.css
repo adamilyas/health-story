@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+body {
+    background-color: skyblue; }
+
+h1 {
+    font-family: 'Press Start 2P';
+}
+
+.loginContainer .loginInput {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    padding-bottom: 20px; 
+}    
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column; 
+    min-width: 250px;
+    padding-bottom: 20px;    
+
+}
+
+.loginContainer .loginCard {
+    background-color: white;
+    padding: 50px; 
+}
+
+.loginInput {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    padding-bottom: 20px;
+}
+
+.loginContainer .loginInput .input, .loginContainer .loginInput .button {
+    margin-top: 30px; }
+
+.logo {
+    height: 150px;
+}
+
+input {
+    border-radius: 25px;
+    width: 400px;
+    height: 40px;
+    padding-inline-start: 20px;
+}
+
+.button {
+    border-radius: 25px !important;
+    height: 50px;
+    width: 210px;
+    background-color: skyblue;
+    font-family: 'Press Start 2P';
+    margin-top: 15px;
+}    
