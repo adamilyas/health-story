@@ -64,7 +64,7 @@ class Register extends Component {
                 <Container fluid>
                     <div className="loginContainer">
                         <div className="loginCard">
-                            <img className="logo" src={this.state.image} alt=""/>
+                            <img className="registerLogo" src={this.state.image} alt=""/>
                             <h3>Create Avatar</h3>
                             <Button onClick={this.selectMale}>Male</Button><Button onClick={this.selectFemale}>Female</Button>
                             <div className="loginInput">
