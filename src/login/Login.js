@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Input, Button, Responsive, Segment } from 'semantic-ui-react';
+import { Container, Input, Button } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 import '../assets/css/login.css';
