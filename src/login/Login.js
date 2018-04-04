@@ -13,8 +13,8 @@ const loginInstance = (
                     <img className="logo" src={logo} alt=""/>
                     <h3>Health Story</h3>
                     <div className="loginInput">
-                        <Input fluid icon="user" iconPosition="left" placeholder="Username"/>
-                        <Input fluid icon="lock" iconPosition="right" placeholder="Password" type="password"/>
+                        <Input fluid placeholder="Username"/>
+                        <Input fluid placeholder="Password" type="password"/>
                     </div>
                     <Button content="Login"/>
                     <Button><NavLink to="/register">New User</NavLink></Button>
