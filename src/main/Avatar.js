@@ -35,22 +35,40 @@ class Avatar extends Component {
         this.updateTransactionValue = this.updateTransactionValue.bind(this);        
     }
 
-    async submitCash(){
+    submitCash1(){
         let submission = {
             name: this.state.name,
             cash: this.state.cash,
             transaction: this.state.transaction,
-            value: this.state.transactionValue
+            value: parseInt(this.state.transactionValue)
         }
-        console.log(submission);
-        let result = await this.callPostAPI(SUBMIT_CASH, submission);
-        console.log(result);
-        if (result){
-            console.log(result);
-            this.setState({cash: result.cash, cashShow: false});
-        } else {
-            console.log('error');
-            this.setState({transaction: "error try again"});
+        
+        try {
+            let x = submission.cash - submission.value;
+            console.log(x);
+            console.log(submission);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async submitCash(){
+        try {
+            let submission = {
+                name: this.state.name,
+                cash: this.state.cash,
+                transaction: this.state.transaction,
+                value: parseInt(this.state.transactionValue)
+            }
+            let result = await this.callPostAPI(SUBMIT_CASH, submission);
+            if (result){
+                console.log(result);
+                this.setState({cash: result.cash, cashShow: false});
+            } else {
+                this.setState({transaction: "error try again"});
+            }            
+        } catch (err) {
+            console.log(err);
         }
 
     }
