@@ -12,7 +12,8 @@ import Plus from '../assets/img/plus.svg';
 import {
     API_SERVER_URL,
     GET_INFO,
-    SUBMIT_CASH
+    SUBMIT_CASH,
+    TOPUP_CASH
 } from '../api';
 
 // import components
@@ -24,32 +25,17 @@ class Avatar extends Component {
         super(props);
         this.showCashModal = this.showCashModal.bind(this);
         this.submitCash = this.submitCash.bind(this);
+        this.topup = this.topup.bind(this);
 
         this.state = {
             name: this.props.location.state.name,
             time: this.getDate(),
             cashShow: false,
             transaction: '',
-            transactionValue: ''
+            transactionValue: '',
+            transactionType: ''
         }
         this.updateTransactionValue = this.updateTransactionValue.bind(this);        
-    }
-
-    submitCash1(){
-        let submission = {
-            name: this.state.name,
-            cash: this.state.cash,
-            transaction: this.state.transaction,
-            value: parseInt(this.state.transactionValue)
-        }
-        
-        try {
-            let x = submission.cash - submission.value;
-            console.log(x);
-            console.log(submission);
-        } catch (err) {
-            console.log(err);
-        }
     }
 
     async submitCash(){
@@ -72,6 +58,27 @@ class Avatar extends Component {
         }
 
     }
+
+    async topup(){
+        try {
+            let submission = {
+                name: this.state.name,
+                cash: this.state.cash,
+                transaction: this.state.transaction,
+                value: parseInt(this.state.transactionValue)
+            }
+            let result = await this.callPostAPI(TOPUP_CASH, submission);
+            if (result){
+                console.log(result);
+                this.setState({cash: result.cash, cashShow: false});
+            } else {
+                this.setState({transaction: "error try again"});
+            }            
+        } catch (err) {
+            console.log(err);
+        }
+
+    }    
 
     updateTransaction(event){
         this.setState({transaction: event.target.value});
@@ -145,45 +152,65 @@ class Avatar extends Component {
                                 <p align="left">{this.state.name}</p>
                                 <p align="right">{this.state.time}</p>
                             </div>   
-
                             <div style={{display: "flex", justifyContent: "space-between", marginBottom: "-15px"}}>
                                 <span align="left"> </span>
                                 <span align="right"><Health health={5}/></span>
-                            </div>    
-                            
+                            </div>                                
                             <div style={{display: "flex", justifyContent: "space-between", marginBottom: "-12px"}}>
                                 <span align="left"> </span>
                                 <p align="right">${this.state.cash}</p>
                             </div>                                      
-
                             <div style={{display: "flex", justifyContent: "space-between"}}>
                                 <span align="left"> </span>
-                                <Button onClick={this.showCashModal} className="addButton" align="right">ADD</Button>
-                            </div>                                 
+                                <Button onClick={this.showCashModal} className="addButton" align="right" style={{backgroundColor: "lawngreen"}}>ADD</Button>
+                            </div>                                                              
                             
-                            <img className="avatarLogo" src={Female} alt="" style={{height: "100px", marginTop: "0px"}}/>
+
+
+
+                            <img className="avatarLogo" src={Female} alt="" style={{height: "100px", marginTop: "0px", marginBottom: "20px"}}/>
+
+                            <div style={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
+                                <Button className="gridButton" align="left"  style={{backgroundColor: "#3ffc4a"}}>
+                            
+                                    <p>Exercise</p><p>Calories burnt: 1000</p>
+                               
+                                </Button>
+                                <Button className="gridButton" right="left"  style={{backgroundColor: "#bffb46"}}>Food</Button>                            
+                            </div>
+                            <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <Button className="gridButton" align="left" style={{backgroundColor: "#368df9"}}>Sleep</Button>
+                                <Button className="gridButton" right="left" style={{backgroundColor: "#3ed8fb"}}>Water</Button>            
+                            </div>                                               
+
+                            <h3>Create Avatar</h3>
+                            <h3>Create Avatar</h3>
+                            <h3>Create Avatar</h3>
+                            <h3>Create Avatar</h3>
+                            <h3>Create Avatar</h3>
                             <h3>Create Avatar</h3>
                             <div className="registerInput">
                             </div>
                             <NavLink to="/" style={{textDecoration:"none", color:"black"}}><Button className="blueButton">LOGOUT</Button></NavLink>                            
                         </div>        
                     </div>
+
+                    <CashModal show={this.state.cashShow} onClose={this.showCashModal} handleSpend={this.submitCash} handleAdd={this.topup}>
+                        <p>My Wallet</p>
+                        <p style={{fontSize: "10px"}} align="left">Spending</p>
+                        <Input align="left" fluid placeholder="E.g. Top up bus fare" type="text" value={this.state.transaction} onChange={this.updateTransaction.bind(this)}/>
+                        <p style={{fontSize: "10px"}} align="left">Value $</p>
+                        <Input align="left" fluid placeholder="$" type="text" value={this.state.transactionValue} onChange={this.updateTransactionValue}/>
+                    </CashModal>                    
                 </Container>
 
 
 
 
-                <CashModal show={this.state.cashShow} onClose={this.showCashModal} handleSubmit={this.submitCash}>
-                    <p>My Wallet</p>
-                    <p style={{fontSize: "10px"}} align="left">Spending</p>
-                    <Input align="left" fluid placeholder="E.g. Top up bus fare" type="text" value={this.state.transaction} onChange={this.updateTransaction.bind(this)}/>
-                    <p style={{fontSize: "10px"}} align="left">Value $</p>
-                    <Input align="left" fluid placeholder="$" type="text" value={this.state.transactionValue} onChange={this.updateTransactionValue}/>
-                </CashModal>
+
             </div>
         )
     }    
 }
 
 export default Avatar;
-

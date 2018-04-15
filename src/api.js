@@ -8,3 +8,4 @@ export const REGISTER = '/userResource/register';
 
 export const GET_INFO = '/avatarResource/getInfo';
 export const SUBMIT_CASH = '/avatarResource/submitCash';
+export const TOPUP_CASH = '/avatarResource/topupCash';
