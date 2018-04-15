@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 
 // import pages
 import Login from './login/Login';
-import HelloWorld from './login/HelloWorld';
 import Register from './login/Register';
+import Avatar from './main/Avatar';
+import Test from './main/Test';
+
 
 // import styling and assets
 import './assets/css/App.css';
@@ -16,9 +18,9 @@ class App extends Component {
       <div>
         <Switch> 
           <Route exact path='/' component={Login}/> 
-          <Route path='/hello' component={HelloWorld}/>
           <Route path='/register' component={Register}/>
-          <Route path='/hello' component={HelloWorld}/>
+          <Route path='/main' component={Avatar}/>
+          <Route path='/test' component={Test}/>
         </Switch>
       </div>
     );

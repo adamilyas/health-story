@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
-import { Container, Input, Button, Label } from 'semantic-ui-react';
+import { Container, Input, Button} from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
-import '../assets/css/register.css';
+// import styling and assets
+import '../assets/css/login.css';
 import Female from '../assets/img/female.jpg';
 import Male from '../assets/img/male_jeans.gif';
+
+// import api
+import {
+    API_SERVER_URL,
+    REGISTER
+} from '../api';
 
 class Register extends Component {
     constructor(props){
@@ -16,11 +24,13 @@ class Register extends Component {
             name: '',
             password: '',
             height: '',
-            weight: ''
+            weight: '',
+            gender: 'female',
+            message: ''
         };
     }
 
-    handleSubmit(){
+    async handleSubmit(){
         let newHeight = this.state.height;
         let newWeight = this.state.weight;
         if (!isNaN(newHeight) && !isNaN(newWeight) && newHeight !== "" 
@@ -29,9 +39,20 @@ class Register extends Component {
                 "name": this.state.name,
                 "password": this.state.password,
                 "height": this.state.height,
-                "weight": this.state.weight
+                "weight": this.state.weight,
+                "gender": this.state.gender
+
             }
-            console.log(submission);
+            let result = await this.callPostAPI(REGISTER, submission);
+            console.log(result);
+            this.setState({message: result.text})
+            if (result.text === "success"){
+                this.props.history.push({
+                    pathname: '/main',
+                    state: {name: this.state.name}
+                })                
+            }
+
         } else {
             alert("You want play the game not? then fill in properly leh");
         }
@@ -49,38 +70,63 @@ class Register extends Component {
     updateWeight(event){
         this.setState({weight: event.target.value});
     }
-
     selectMale(){
-        this.setState({image: Male})
+        this.setState({image: Male, gender: 'male'})
+    }
+    selectFemale(){
+        this.setState({image: Female, gender: 'female'})
     }
 
-    selectFemale(){
-        this.setState({image: Female})
-    }
+    async callPostAPI(api, body){
+        let result = {};
+        
+        await fetch(API_SERVER_URL + api,{
+            method: 'POST', 
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+        .then((response) => response.json())
+        .then((responseJson)=>{
+            result = responseJson;
+        })
+
+        return result;
+    }    
 
     render(){
         return (
             <div className="App">
                 <Container fluid>
                     <div className="loginContainer">
-                        <div className="loginCard">
+                        <div className="loginCard" style={{"background-color": "white", padding: "40px", width: "270px"}}>
+
                             <img className="registerLogo" src={this.state.image} alt=""/>
+
                             <h3>Create Avatar</h3>
-                            <Button onClick={this.selectMale}>Male</Button><Button onClick={this.selectFemale}>Female</Button>
-                            <div className="loginInput">
+                            <Button className="blueButton" onClick={this.selectMale}>Male</Button>
+                            <Button className="blueButton" onClick={this.selectFemale}>Female</Button>
+
+                            <div className="registerInput">
                                 <p>Input name</p>
-                                <Input fluid placeholder="Name" value={this.state.name} onChange={this.updateName.bind(this)}/>
+                                <Input placeholder="Name" value={this.state.name} onChange={this.updateName.bind(this)}/>
                                 <p>Password</p>
-                                <Input fluid placeholder="Password" value={this.state.password} onChange={this.updatePassword.bind(this)}/>
+                                <Input placeholder="Password" value={this.state.password} onChange={this.updatePassword.bind(this)}/>
                                 <p>Height/ cm</p>
-                                <Input fluid placeholder="Height" value={this.state.height} onChange={this.updateHeight.bind(this)}/>
+                                <Input placeholder="Height" value={this.state.height} onChange={this.updateHeight.bind(this)}/>
                                 <p>Weight/ kg </p>
-                                <Input fluid placeholder="Weight" value={this.state.weight} onChange={this.updateWeight.bind(this)}/>
+                                <Input placeholder="Weight" value={this.state.weight} onChange={this.updateWeight.bind(this)}/>
+                                <p>{this.state.message}</p>
+
                             </div>
-                            <Button content="CREATE" onClick={this.handleSubmit} />
+                            <Button className="blueButton" content="CREATE" onClick={this.handleSubmit} /><br />
+                            <NavLink to="/"><Button className="blueButton">BACK</Button></NavLink>
                         </div>        
                     </div>
                 </Container>
+
             </div>
         )
     }    

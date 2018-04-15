@@ -11,42 +11,43 @@ p {
     font-family: 'Press Start 2P';
 }
 
-.loginContainer .loginInput {
-    display: flex;
-    flex-direction: column;
-    min-width: 150px;
-}    
-
-.loginContainer {
+.avatarContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column; 
     min-width: 150px; 
-
+    margin-top: 100px;
+   
 }
-
-.loginContainer .loginInput .input, .loginContainer .loginInput .button {
-    margin-top: 0px; }
 
 .registerLogo {
     height: 100px;
-    margin-top: 300px;
+    margin-top: 100px;
 }
 
-input {
+Input {
     border-radius: 25px;
-    width: 250px;
-    height: 25px;
-    padding-inline-start: 15px;
+    height: 20px;
+    border-inline-start: 15px;
+    outline: none;
+    margin-bottom: 0px;
 }
 
-.button {
+.blueButton {
     border-radius: 25px !important;
     height: 40px;
     width: 135px;
     background-color: skyblue;
     font-family: 'Press Start 2P';
-    margin-bottom: 20px;
+    outline: none;
+}    
+
+.addButton {
+    border-radius: 5px;
+    height: 20px;
+    width: 60px;
+    background-color: lawngreen;
+    font-family: 'Press Start 2P';
+    outline: none;
 }    

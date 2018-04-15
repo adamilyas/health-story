@@ -7,57 +7,40 @@ h3 {
     font-family: 'Press Start 2P';
 }
 
-.loginContainer .loginInput {
-    display: flex;
-    flex-direction: column;
-    min-width: 150px;
-    padding-bottom: 20px; 
-}    
+p {
+    font-family: 'Press Start 2P';
+}
 
 .loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     flex-direction: column; 
     min-width: 150px;
-    padding-bottom: 20px;    
-
 }
 
-.loginContainer .loginCard {
-    background-color: white;
-    padding: 40px; 
-}
-
-.loginInput {
-    display: flex;
-    flex-direction: column;
-    min-width: 150px;
-    padding-bottom: 20px;
-}
-
-.loginContainer .loginInput .input, .loginContainer .loginInput .button {
-    margin-top: 20px; }
-
-.logo {
+.loginLogo {
     height: 100px;
+    margin-top: 100px;
 }
 
-input {
+Input {
     border-radius: 25px;
-    width: 250px;
-    height: 25px;
+    height: 20px;
     padding-inline-start: 15px;
-    margin-top: 20px;
+    outline: none;
 }
 
-.button {
+.blueButton {
     border-radius: 25px !important;
     height: 40px;
     width: 135px;
     background-color: skyblue;
     font-family: 'Press Start 2P';
-    margin-top: 15px;
+    outline: none;
 }    
+
+.App {
+    text-align: center;
+}
