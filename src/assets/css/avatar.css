@@ -1,16 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
-
-body {
-    background-color: skyblue; }
-
-h3 {
-    font-family: 'Press Start 2P';
-}
-
-p {
-    font-family: 'Press Start 2P';
-}
-
 .avatarContainer {
     display: flex;
     flex-direction: column;
@@ -26,22 +13,12 @@ p {
     margin-top: 100px;
 }
 
-Input {
+.normInput {
     border-radius: 25px;
     height: 20px;
-    border-inline-start: 15px;
+    padding-inline-start: 15px;
     outline: none;
-    margin-bottom: 0px;
-}
-
-.blueButton {
-    border-radius: 25px !important;
-    height: 40px;
-    width: 135px;
-    background-color: skyblue;
-    font-family: 'Press Start 2P';
-    outline: none;
-}    
+}   
 
 .addButton {
     border-radius: 5px;
