@@ -11,3 +11,7 @@ export const SUBMIT_CASH = '/avatarResource/submitCash';
 export const TOPUP_CASH = '/avatarResource/topupCash';
 
 export const SUBMIT_EXERCISE = '/avatarResource/submitExercise';
+
+export const SUBMIT_FOOD = '/avatarResource/submitFood';
+
+export const SUBMIT_WATER = '/avatarResource/submitWater';

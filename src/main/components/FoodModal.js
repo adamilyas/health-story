@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import '../../assets/css/avatar.css'
 
 const  modalStyle = {
-    backgroundColor: 'rgba(62, 216, 251, 0.9)', 
+    backgroundColor: 'rgba(191, 251, 70, 0.9)',
     maxWidth: 270,
-    minHeight: 250,
+    minHeight: 220,
     margin: 'auto',
     padding: 30,
     position: 'relative',
@@ -39,7 +39,7 @@ const buttonStyle = {
     backgroundColor: "aqua"
 }
 
-export default class WaterModal extends Component {
+export default class FoodModal extends Component {
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e);

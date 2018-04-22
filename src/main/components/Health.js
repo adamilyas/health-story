@@ -8,7 +8,7 @@ export default class Health extends Component {
         return (
             <div>
                 {[...Array(this.props.health)].map((item, index) => {
-                    return <img src={logo} alt=""  style={{height: "20px"}}/>
+                    return <img key={index} src={logo} alt=""  style={{height: "20px"}}/>
                 })}
             </div>
         )

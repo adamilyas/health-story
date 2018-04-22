@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react';
 
 import '../../assets/css/avatar.css'
 
@@ -10,7 +9,7 @@ const  modalStyle = {
     margin: 'auto',
     padding: 30,
     position: 'relative',
-    marginTop: '-700px'
+    marginTop: '-650px'
 }
 
 const foot1Style = {

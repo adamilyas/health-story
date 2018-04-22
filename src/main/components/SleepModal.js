@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import '../../assets/css/avatar.css'
 
 const  modalStyle = {
-    backgroundColor: 'rgba(62, 216, 251, 0.9)', 
+    backgroundColor: 'rgba(54, 141, 249, 0.9)',
     maxWidth: 270,
-    minHeight: 250,
+    minHeight: 220,
     margin: 'auto',
     padding: 30,
     position: 'relative',
@@ -20,11 +20,12 @@ const foot2Style = {
 const footerStyle = {
     position: 'absolute',
     top: 10,
-    right: 5
+    right: 5,
+
 };
 
 const topupStyle = {
-    width:"120px", 
+    width:"100px", 
     height: "25px", 
     borderRadius:"15px",
     fontSize: "10px",
@@ -39,7 +40,7 @@ const buttonStyle = {
     backgroundColor: "aqua"
 }
 
-export default class WaterModal extends Component {
+export default class SleepModal extends Component {
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e);
@@ -57,7 +58,7 @@ export default class WaterModal extends Component {
             <div style={modalStyle}>
                 {this.props.children}       
                 <div style={foot2Style}>
-                    <button className="addButton" style={topupStyle} onClick = { (e) => {this.handleAdd(e)}}>Save</button>&nbsp;&nbsp;                 
+                    <button className="addButton" align="right" style={topupStyle} onClick = { (e) => {this.handleAdd(e)}}>Save</button>&nbsp;&nbsp;                 
                 </div>                           
                 <div style={footerStyle}>
                     <button className="addButton" style={buttonStyle} onClick = { (e) => {this.onClose(e)}}>X</button>&nbsp;&nbsp;                  

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react';
 
 import '../../assets/css/avatar.css'
 
@@ -10,13 +9,8 @@ const  modalStyle = {
     margin: 'auto',
     padding: 30,
     position: 'relative',
-    marginTop: '-700px'
+    marginTop: '-650px'
 }
-
-const foot1Style = {
-    position: 'absolute',
-    bottom: 60
-};
 
 const foot2Style = {
     position: 'absolute',
@@ -28,14 +22,6 @@ const footerStyle = {
     top: 10,
     right: 5
 };
-
-const spendStyle = {
-    width:"120px", 
-    height: "25px", 
-    borderRadius:"15px",
-    fontSize: "10px",
-    backgroundColor: "lawngreen"
-}
 
 const topupStyle = {
     width:"120px", 
