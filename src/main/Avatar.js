@@ -54,6 +54,8 @@ class Avatar extends Component {
 
         this.getGender = this.getGender.bind(this);
 
+        this.toDiscount = this.toDiscount.bind(this);
+
         this.state = {
             name: this.props.location.state.name,
             time: this.getDate(),
@@ -75,6 +77,13 @@ class Avatar extends Component {
         }
         //this.updateTransactionValue = this.updateTransactionValue.bind(this);        
     }
+    toDiscount(){
+        this.props.history.push({
+            pathname: '/discount', 
+            state: { name: this.state.name }
+        });
+    }
+
     getGender(g){
         if (g === "male"){
             return Male;
@@ -331,7 +340,14 @@ class Avatar extends Component {
             <div className="App">
                 <Container fluid>                
                     <div className="avatarContainer">   
-                        <div style={{backgroundColor: "white", width: "310px", padding: "20px"}}>
+
+                        <div className="standard">
+                            <div style={{display:"flex", justifyContent:"space-between"}}> 
+                                
+                                <button  className="navButton" onClick={this.toDiscount}>$</button>
+
+                            </div>
+
                             <div style={{display: "flex", justifyContent: "space-between", marginBottom: "-12px"}}>
                                 <p align="left">{this.state.name}</p>
                                 <p align="right">{this.state.time}</p>
@@ -369,7 +385,7 @@ class Avatar extends Component {
                             </div>
                             <div style={{display: "flex", justifyContent: "space-between"}}>
                                 <Button className="gridButton" align="left" onClick={this.showSleepModal} style={{backgroundColor: "rgba(54, 141, 249, 1)"}}>
-                                    <p>Sleep</p><p>Hours left: zZZZ</p>
+                                    <p>Sleep</p>
                                 </Button>
                                 
                                 <Button className="gridButton" right="left" onClick={this.showWaterModal}  style={{backgroundColor: "#3ed8fb"}}>
@@ -377,12 +393,8 @@ class Avatar extends Component {
                                 </Button>            
                             </div>                                               
 
-                            <p>Drink 8 water of glass daily</p>
-                            <p>Eat your bhejitables</p>
-                            <h3>Dont go OPSPITAL</h3>
-                            <div className="registerInput">
-                            </div>
-                            <NavLink to="/" style={{textDecoration:"none", color:"black"}}><Button className="blueButton">LOGOUT</Button></NavLink>                            
+                            <p>Drink 8 water of glass daily!</p>
+                            <NavLink to="/" ><button className="blueButton">Logout</button></NavLink>                            
                         </div>        
                     </div>
 
@@ -411,7 +423,7 @@ class Avatar extends Component {
                         <img className="avatarLogo" src={Restr} alt="" style={{height: "70px", position:"absolute", right:"25px", top:"100px"}}/>
                     </FoodModal>    
 
-                    <SleepModal show={this.state.sleepShow} onClose={this.showSleepModal} handleAdd={this.submitSleep}>
+                    <SleepModal show={this.state.sleepShow} onClose={this.showSleepModal} handleAdd={this.showSleepModal}>
                         <p>Electric Dreams</p>
                         <div style={{display: "flex", flexDirection:"row", marginBottom:"20px" }}>
 

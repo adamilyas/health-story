@@ -85,8 +85,9 @@ class Login extends Component {
         return (
             <div className="App">
                 <Container fluid>
-                    <div className="loginContainer">
-                        <div className="loginCard" style={{backgroundColor: "white", padding: "40px", width: "270px"}}>
+                    <div className="avatarContainer">
+                    
+                        <div className="standard">  
 
                             <img className="loginLogo" src={logo} alt=""/>
                             <h3>Health Story</h3>
@@ -101,6 +102,8 @@ class Login extends Component {
                                 <Button className="blueButton" content="Login" onClick={this.handleLogin} style={{marginTop: '30px'}}/>
                                 <NavLink to="/register"><Button className="blueButton">New User</Button></NavLink>
                             </div>
+                            <br /> <br />
+                            <p>Eat 3 servings of veg everyday</p>
                         </div>                      
                     </div>
                 </Container>

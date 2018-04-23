@@ -5,7 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './login/Login';
 import Register from './login/Register';
 import Avatar from './main/Avatar';
-import Test from './main/Test';
+import Discount from './main/Discount';
+import DiscountList from './main/DiscountList';
 
 
 // import styling and assets
@@ -20,7 +21,8 @@ class App extends Component {
           <Route exact path='/' component={Login}/> 
           <Route path='/register' component={Register}/>
           <Route path='/main' component={Avatar}/>
-          <Route path='/test' component={Test}/>
+          <Route path='/discount' component={Discount}/>
+          <Route path='/discountList' component={DiscountList}/>
         </Switch>
       </div>
     );

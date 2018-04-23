@@ -9,7 +9,7 @@ const  modalStyle = {
     margin: 'auto',
     padding: 30,
     position: 'relative',
-    marginTop: '-650px'
+    marginTop: '-500px'
 }
 
 const foot1Style = {
