@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // import styling and assets
 import '../assets/css/login.css';
+import '../assets/css/avatar.css';
 import Female from '../assets/img/female.jpg';
 import Male from '../assets/img/male_jeans.gif';
 
@@ -100,14 +101,16 @@ class Register extends Component {
         return (
             <div className="App">
                 <Container fluid>
-                    <div className="loginContainer">
-                        <div className="loginCard" style={{"background-color": "white", padding: "40px", width: "270px"}}>
-
+                    <div className="avatarContainer">
+                        <div className="standard" style={{height: "700px"}}>
+                            <div style={{display: "flex", flexDirection:"row"}}>
+                                <NavLink to="/"><Button className="navButton">{'<<'}</Button></NavLink>
+                            </div>
                             <img className="registerLogo" src={this.state.image} alt=""/>
 
                             <h3>Create Avatar</h3>
-                            <Button className="blueButton" onClick={this.selectMale}>Male</Button>
-                            <Button className="blueButton" onClick={this.selectFemale}>Female</Button>
+                            <Button className="blueButton"  style={{width:"120px"}} onClick={this.selectMale}>Male</Button>&nbsp;&nbsp;
+                            <Button className="blueButton"  style={{width:"120px"}} onClick={this.selectFemale}>Female</Button>
 
                             <div className="registerInput">
                                 <p>Input name</p>
@@ -122,7 +125,6 @@ class Register extends Component {
 
                             </div>
                             <Button className="blueButton" content="CREATE" onClick={this.handleSubmit} /><br />
-                            <NavLink to="/"><Button className="blueButton">BACK</Button></NavLink>
                         </div>        
                     </div>
                 </Container>
