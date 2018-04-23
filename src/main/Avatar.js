@@ -334,11 +334,22 @@ class Avatar extends Component {
 
         return result;
     }
+
+    increaseHealth(){
+        this.setState({health: this.state.health+1})
+    }
+    decreaseHealth(){
+        this.setState({health: this.state.health-1})
+    }
   
     render(){
         return (
             <div className="App">
-                <Container fluid>                
+
+
+
+                <Container fluid>      
+                             
                     <div className="avatarContainer">   
 
                         <div className="standard">
@@ -453,6 +464,11 @@ class Avatar extends Component {
                         {[...Array(this.state.water2)].map((item, index) => {return <img src={Bottle} key={index} onClick={this.click2}  alt=""  style={{height: "50px"}}/> })}
                         </div>                     
                     </WaterModal> 
+
+                <div style={{ position: 'relative',marginTop: '-400px', marginRight: "700px"}}>
+                    <button  className="navButton" onClick={this.increaseHealth.bind(this)}>+</button>
+                    <button  className="navButton" onClick={this.decreaseHealth.bind(this)}>-</button> 
+                </div>
 
                 </Container>
 

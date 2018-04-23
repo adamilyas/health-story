@@ -90,7 +90,7 @@ class Login extends Component {
                         <div className="standard">  
 
                             <img className="loginLogo" src={logo} alt=""/>
-                            <h3>Health Story</h3>
+                            <h3>Xiao ME</h3>
 
                             <div className="loginInput">
                                 <Input fluid placeholder="Username" value={this.state.name} onChange={this.updateName.bind(this)} /><br />
