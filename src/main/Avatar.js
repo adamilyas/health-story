@@ -168,14 +168,15 @@ class Avatar extends Component {
                 name: this.state.name,
                 exercise: this.state.exercise,
                 type: this.state.exerciseType,
-                interval: this.state.exerciseInterval
+                interval: this.state.exerciseInterval,
+                health: this.state.health
             }           
             console.log(submission); 
             let result = await this.callPostAPI(SUBMIT_EXERCISE, submission);
             console.log(result);
             if (result){
                 console.log(result);
-                this.setState({health: this.state.health+1,exercise: result.exercise, exerciseShow: false});
+                this.setState({health: result.health ,exercise: result.exercise, exerciseShow: false});
             }
         } catch (err) {
             console.log(err);
