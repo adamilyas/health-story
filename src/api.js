@@ -15,3 +15,5 @@ export const SUBMIT_EXERCISE = '/avatarResource/submitExercise';
 export const SUBMIT_FOOD = '/avatarResource/submitFood';
 
 export const SUBMIT_WATER = '/avatarResource/submitWater';
+
+export const LOGOUT = '/avatarResource/logout';

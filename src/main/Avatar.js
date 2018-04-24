@@ -18,7 +18,8 @@ import {
     TOPUP_CASH,
     SUBMIT_EXERCISE,
     SUBMIT_FOOD,
-    SUBMIT_WATER
+    SUBMIT_WATER,
+    LOGOUT
 } from '../api';
 
 // import components
@@ -342,6 +343,29 @@ class Avatar extends Component {
     decreaseHealth(){
         this.setState({health: this.state.health-1})
     }
+
+    async logout(){
+        let submission = {
+            name: this.state.name,
+            health: this.state.health
+        }
+        try {
+            let result = await this.callPostAPI(LOGOUT, submission);
+            if (result.message === "success"){
+                this.props.history.push({
+                    pathname: '/', 
+                    state: { name: this.state.name }
+                });
+            } else {
+                alert("Logout error");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        
+
+
+    }
   
     render(){
         return (
@@ -406,7 +430,7 @@ class Avatar extends Component {
                             </div>                                               
 
                             <p>Drink 8 water of glass daily!</p>
-                            <NavLink to="/" ><button className="blueButton">Logout</button></NavLink>                            
+                            <button onClick={this.logout.bind(this)} className="blueButton">Logout</button>
                         </div>        
                     </div>
 
@@ -439,20 +463,16 @@ class Avatar extends Component {
                         <p>Electric Dreams</p>
                         <div style={{display: "flex", flexDirection:"row", marginBottom:"20px" }}>
 
-                            <button onClick={this.setTime1} className="timeButton" style={{fontSize: "12px", marginRight:"20px"}} align="left">Start:</button>
+                            <button onClick={this.setTime1} className="timeButton" style={{fontSize: "12px", marginRight:"20px", width:"100px",height:"40px"}} align="left">Start:</button>
 
-                            <div style={{backgroundColor:"white",width:"150px",height:"40px"}}>
-                                <p className="timeInput" style={{fontSize: "12px"}}> {this.state.time1}</p>
-                            </div>
+                            <input style={{backgroundColor:"white",width:"120px",height:"33px"}}></input>
                         </div>    
 
                         <div style={{display: "flex", flexDirection:"row" }}>
 
-                            <button onClick={this.setTime2} className="timeButton" style={{fontSize: "12px", marginRight:"20px"}} align="left">End:</button>
+                            <button onClick={this.setTime2} className="timeButton" style={{fontSize: "12px", marginRight:"20px", width:"100px",height:"40px"}} align="left">End:</button>
 
-                            <div style={{backgroundColor:"white",width:"150px",height:"40px"}}>
-                                <p className="timeInput" style={{fontSize: "12px"}}> {this.state.time2}</p>
-                            </div>
+                                <input style={{backgroundColor:"white",width:"120px",height:"33px"}}></input>
                         </div>                        
                     </SleepModal>                       
 
