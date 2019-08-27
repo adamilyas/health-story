@@ -9,10 +9,12 @@ import Female from '../assets/img/female.jpg';
 import Male from '../assets/img/male_jeans.gif';
 
 // import api
+/*
 import {
     API_SERVER_URL,
     REGISTER
 } from '../api';
+*/
 
 class Register extends Component {
     constructor(props){
@@ -35,7 +37,7 @@ class Register extends Component {
         let newHeight = this.state.height;
         let newWeight = this.state.weight;
         if (!isNaN(newHeight) && !isNaN(newWeight) && newHeight !== "" 
-        && newWeight !== "" &&this.state.name !== "" && this.state.password !== ""){
+        && newWeight !== "" && this.state.name !== "" && this.state.password !== ""){
             let submission = {
                 "name": this.state.name,
                 "password": this.state.password,
@@ -44,6 +46,20 @@ class Register extends Component {
                 "gender": this.state.gender
 
             }
+            console.log("Submission Success")
+            console.log(submission)
+            console.log(this.state)
+
+            //log in to 
+            this.props.history.push({
+                pathname: '/main',
+                state: {
+                    name: this.state.name
+                }
+            })
+            
+            
+            /*
             let result = await this.callPostAPI(REGISTER, submission);
             console.log(result);
             this.setState({message: result.text})
@@ -53,6 +69,7 @@ class Register extends Component {
                     state: {name: this.state.name}
                 })                
             }
+            */
 
         } else {
             alert("You want play the game not? then fill in properly leh");
@@ -78,6 +95,7 @@ class Register extends Component {
         this.setState({image: Female, gender: 'female'})
     }
 
+    /*
     async callPostAPI(api, body){
         let result = {};
         
@@ -96,7 +114,8 @@ class Register extends Component {
 
         return result;
     }    
-
+    */
+    
     render(){
         return (
             <div className="App">

@@ -11,6 +11,7 @@ import Restr from '../assets/img/rest.png';
 import Bottle from '../assets/img/water.svg';
 
 // import api
+/*
 import {
     API_SERVER_URL,
     GET_INFO,
@@ -21,6 +22,7 @@ import {
     SUBMIT_WATER,
     LOGOUT
 } from '../api';
+*/
 
 // import components
 import Health from './components/Health';
@@ -35,17 +37,17 @@ class Avatar extends Component {
     constructor(props){
         super(props);
         this.showCashModal = this.showCashModal.bind(this);
-        this.submitCash = this.submitCash.bind(this);
-        this.topup = this.topup.bind(this);
+        //this.submitCash = this.submitCash.bind(this);
+        //this.topup = this.topup.bind(this);
 
         this.showExerciseModal = this.showExerciseModal.bind(this);
-        this.submitExercise = this.submitExercise.bind(this);    
+        //this.submitExercise = this.submitExercise.bind(this);    
 
         this.showFoodModal = this.showFoodModal.bind(this);
-        this.submitFood = this.submitFood.bind(this); 
+        //this.submitFood = this.submitFood.bind(this); 
 
         this.showWaterModal = this.showWaterModal.bind(this);
-        this.submitWater = this.submitWater.bind(this);
+        //this.submitWater = this.submitWater.bind(this);
         this.click1 = this.click1.bind(this);
         this.click2 = this.click2.bind(this);
 
@@ -59,6 +61,7 @@ class Avatar extends Component {
 
         this.state = {
             name: this.props.location.state.name,
+            gender: this.props.location.state.gender,
             time: this.getDate(),
             cashShow: false,
             transaction: '',
@@ -92,7 +95,9 @@ class Avatar extends Component {
             return Female;
         }
     }
-                                                                        // submit transaction
+
+    /*
+    // submit transaction
     async submitCash(){
         try {
             let submission = {
@@ -135,7 +140,7 @@ class Avatar extends Component {
 
     }    
                                                                                 // transaction
-
+    */                                                                                
     showCashModal(){
         this.setState({cashShow: !this.state.cashShow});
     }                                                                                
@@ -163,6 +168,7 @@ class Avatar extends Component {
             this.setState({exerciseInterval: event.target.value})
          }
     }
+    /*
     async submitExercise(){
         try {
             let submission = {
@@ -183,7 +189,7 @@ class Avatar extends Component {
             console.log(err);
         }
     }     
-                                                                            // food
+    */                                                                        // food
     showFoodModal(){
         this.setState({foodShow: !this.state.foodShow});
     }                                                                                 
@@ -196,7 +202,7 @@ class Avatar extends Component {
             this.setState({foodQuantity : event.target.value})
          }
     } 
-    
+    /*
     async submitFood(){
         console.log(this.state);
         let submission = {
@@ -221,12 +227,13 @@ class Avatar extends Component {
             console.log(err);
         }
     }
+    */
                                                                                                                  // watere
 
     showWaterModal(){
         this.setState({waterShow: !this.state.waterShow});
     }
-
+    /*
     async submitWater(){
         let submission = {
             name: this.state.name,
@@ -241,6 +248,8 @@ class Avatar extends Component {
             this.setState({health: result.health, waterShow: false, water1: result.water1, water2: result.water2});
         }
     }
+    */
+
 
     click1(e){
         if (this.state.water1 == null){
@@ -284,17 +293,32 @@ class Avatar extends Component {
         var h = `0${d.getHours()}`.slice(-2);
         var m = `0${d.getMinutes()}`.slice(-2);
         var s = `0${d.getSeconds()}`.slice(-2);
-        return `${h}:${m}:${s}`;
+        return `${h}:${m}:${s}`
 
     }    
     async componentDidMount() {
+        console.log(this.state)
         this.intervalID = setInterval(
             () => this.tick(),
             1000
         );
-                                                                    // didMount get info here
-        let result = await this.callPostAPI(GET_INFO, {name: this.state.name});
+        // didMount get info here
+        //let result = await this.callPostAPI(GET_INFO, {name: this.state.name});
+        // temporary result
+        var result = {
+            cash: 1000,
+            gender: "male",
+            info: {
+                sleep: 10,
+                food: 10,
+                water1: 4,
+                water2: 4,
+                exercise: 10,
+                health: 5
+            }
+        }
 
+        
         this.setState({
             cash: result.cash,
             gender: result.gender,
@@ -317,7 +341,7 @@ class Avatar extends Component {
             time: this.getDate()
         });
     }
-                                                                    // ggeneric post function
+    /*                                                             // ggeneric post function
     async callPostAPI(api, body){
         let result = {};
         
@@ -336,19 +360,24 @@ class Avatar extends Component {
 
         return result;
     }
-
+    */
     increaseHealth(){
         this.setState({health: this.state.health+1})
     }
     decreaseHealth(){
         this.setState({health: this.state.health-1})
     }
-
     async logout(){
         let submission = {
             name: this.state.name,
             health: this.state.health
         }
+    this.props.history.push({
+                        pathname: '/', 
+                        state: { name: this.state.name }
+                    });
+        
+        /*
         try {
             let result = await this.callPostAPI(LOGOUT, submission);
             if (result.message === "success"){
@@ -362,11 +391,9 @@ class Avatar extends Component {
         } catch (err) {
             console.log(err);
         }
-        
-
-
+        */
     }
-  
+
     render(){
         return (
             <div className="App">
