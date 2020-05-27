@@ -1,5 +1,27 @@
 # Health App Prototype
 
+## Check out the prototype/ draft
+https://adamilyas.github.io/health-story/
+
+Pardon the lame design and bad code. I did this when I first started the coding and I'm lazy to do anything about it.
+
+## Running
+```
+npm i
+npm start
+```
+
+## Publishing to github pages
+Install gh-pages as dev dependencies
+```
+npm install gh-pages --save-dev
+```
+
+set package.json -> homepage to be your github page url and add the necessary `predeploy` and `deploy` steps. Finally, run the following:
+```
+npm run predeploy; npm run deploy;
+```
+
 ## Description
 
 Simple Health Tracking App Mockup, built using React
